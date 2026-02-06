@@ -1,0 +1,22 @@
+{
+	"FileVersion": 3,
+	"CreatedBy": "Alan Edwardes",
+	"CreatedByURL": "https://alanedwardes.com/",
+	"Modules": [
+		{
+			"Name": "EstSteam",
+			"Type": "Runtime",
+			"LoadingPhase": "PreLoadingScreen"
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "OnlineSubsystem",
+			"Enabled": true
+		},
+		{
+			"Name": "OnlineSubsystemSteam",
+			"Enabled": true
+		}
+	]
+}
