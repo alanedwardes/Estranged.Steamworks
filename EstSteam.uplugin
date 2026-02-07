@@ -6,7 +6,7 @@
 		{
 			"Name": "EstSteam",
 			"Type": "Runtime",
-			"LoadingPhase": "PreLoadingScreen"
+			"LoadingPhase": "PostEngineInit"
 		}
 	],
 	"Plugins": [
