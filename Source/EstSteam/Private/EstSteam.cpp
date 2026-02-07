@@ -4,8 +4,6 @@
 #include "GameFramework/PlayerState.h"
 #include "GenericPlatform/GenericPlatformProcess.h"
 
-FNativeFuncPtr OriginalGetPlayerNameFunc = nullptr;
-
 #pragma push_macro("hResult")
 #undef hResult
 #include "steam/steam_api.h"
@@ -18,7 +16,6 @@ void FEstSteamModule::StartupModule()
 	UFunction* TargetFunc = APlayerState::StaticClass()->FindFunctionByName(FName("GetPlayerName"));
 	if (TargetFunc)
 	{
-		OriginalGetPlayerNameFunc = TargetFunc->GetNativeFunc();
 		TargetFunc->SetNativeFunc(&UEstSteamStatics::execGetSteamPlayerName);
 	}
 }
@@ -26,15 +23,6 @@ void FEstSteamModule::StartupModule()
 void FEstSteamModule::ShutdownModule()
 {
 	FCoreDelegates::LaunchCustomHandlerForURL.Unbind();
-    
-	if (OriginalGetPlayerNameFunc)
-	{
-		UFunction* TargetFunc = APlayerState::StaticClass()->FindFunctionByName(FName("GetPlayerName"));
-		if (TargetFunc)
-		{
-			TargetFunc->SetNativeFunc(OriginalGetPlayerNameFunc);
-		}
-	}
 }
 
 void FEstSteamModule::HandleLaunchURL(const FString& URL, FString* Error)
