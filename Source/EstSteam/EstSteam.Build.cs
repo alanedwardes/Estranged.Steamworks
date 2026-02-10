@@ -22,7 +22,8 @@ public class EstSteam : ModuleRules
                 "SlateCore",
                 "OnlineSubsystem",
                 "OnlineSubsystemSteam",
-                "Steamworks"
+                "Steamworks",
+                "HTTP"
             }
         );
     }
