@@ -6,6 +6,8 @@
 #include "HttpModule.h"
 #include "Interfaces/IHttpRequest.h"
 #include "Misc/ConfigCacheIni.h"
+#include "Misc/Paths.h"
+#include "HAL/PlatformFileManager.h"
 
 #pragma push_macro("hResult")
 #undef hResult
@@ -23,6 +25,12 @@ static void SendStatsRequest(const FString& FailureReason)
 	}
 
 	if (StatsEndpoint.IsEmpty())
+	{
+		return;
+	}
+
+	const FString OptOutPath = FPaths::Combine(FPaths::ProjectSavedDir(), TEXT("NoTelemetry.txt"));
+	if (FPlatformFileManager::Get().GetPlatformFile().FileExists(*OptOutPath))
 	{
 		return;
 	}
