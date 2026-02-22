@@ -2,6 +2,7 @@
 #include "GameFramework/PlayerState.h"
 
 #include "steam/steam_api.h"
+#include UE_INLINE_GENERATED_CPP_BY_NAME(EstSteamStatics)
 
 DEFINE_FUNCTION(UEstSteamStatics::execGetSteamPlayerName)
 {

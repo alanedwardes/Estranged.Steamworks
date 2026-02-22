@@ -4,7 +4,8 @@ public class EstSteam : ModuleRules
 {
     public EstSteam(ReadOnlyTargetRules Target) : base(Target)
     {
-        PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
+        IWYUSupport = IWYUSupport.Full;
+        PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 
         PublicDependencyModuleNames.AddRange(
             new string[]
